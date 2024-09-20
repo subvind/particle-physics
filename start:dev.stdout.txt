@@ -1,0 +1,196 @@
+========
+PARTICLE PHYSICS:
+========
+
+particle:
+- name: Photon
+- type: Boson
+- mass: 0
+- quantumNumbers:
+  - spin: 1
+  - charge: 0
+  - color: undefined
+  - isospin: undefined
+
+particle:
+- name: Graviton
+- type: Boson
+- mass: 0
+- quantumNumbers:
+  - spin: 2
+  - charge: 0
+  - color: undefined
+  - isospin: undefined
+
+particle:
+- name: Gluon
+- type: Boson
+- mass: 0
+- quantumNumbers:
+  - spin: 1
+  - charge: 0
+  - color: none
+  - isospin: undefined
+
+particle:
+- name: W/Z Boson
+- type: Boson
+- mass: 80.4
+- quantumNumbers:
+  - spin: 1
+  - charge: 1
+  - color: undefined
+  - isospin: undefined
+
+
+========
+FORCES:
+========
+
+force:
+- name: Electromagnetic Force
+- strength: 0.0072992700729927005
+- range: Infinite
+- description: Acts between electrically charged particles
+- mediator: [object Object]
+
+force:
+- name: Gravitational Force
+- strength: 6e-39
+- range: Infinite
+- description: Acts between all particles with mass
+- mediator: [object Object]
+
+force:
+- name: Strong Nuclear Force
+- strength: 1
+- range: ~1e-15 m
+- description: Binds quarks to form hadrons and holds atomic nuclei together
+- mediator: [object Object]
+
+force:
+- name: Weak Nuclear Force
+- strength: 0.000001
+- range: ~1e-18 m
+- description: Responsible for radioactive decay and neutrino interactions
+- mediator: [object Object]
+
+
+========
+COLLISION (1):
+========
+
+particle:
+- name: Up Quark
+- type: Quark
+- mass: 0.0022
+- quantumNumbers:
+  - spin: 0.5
+  - charge: 0.6666666666666666
+  - color: red
+  - isospin: undefined
+
+particle:
+- name: Electron
+- type: Lepton
+- mass: 0.000511
+- quantumNumbers:
+  - spin: 0.5
+  - charge: -1
+  - color: undefined
+  - isospin: undefined
+
+Accelerating particles to 13000 GeV
+Up Quark momentum: 1.30e+4 GeV/c
+Electron momentum: 1.30e+4 GeV/c
+
+Colliding Up Quark with Electron
+Total collision energy: 26000 GeV
+
+Force interactions during collision:
+
+Electromagnetic Force:
+Electromagnetic force between Up Quark and Electron: -2.07e+0
+Particles attract each other
+
+Gravitational Force:
+Gravitational force between Up Quark and Electron: 1.28e-15 N
+Gravity is always attractive
+
+Strong Nuclear Force:
+Strong force doesn't act on Up Quark or Electron (not quarks)
+
+Weak Nuclear Force:
+Weak interaction occurs between Up Quark and Electron
+W boson exchange: flavor change occurs
+Electron changes to Electron Neutrino
+
+Collision outcomes:
+Created 13903 proton-antiproton pairs
+Created 1389 electron-positron pairs
+Quark-involved decay processes:
+- Hadronization: quarks combine to form hadrons
+- Jet formation: streams of particles from quark decay
+Lepton-involved decay processes:
+- Possible neutrino oscillation
+- Lepton flavor changing interactions (via weak force)
+Remaining energy converted to heat and radiation
+
+========
+COLLISION (2):
+========
+
+particle:
+- name: Electron
+- type: Lepton
+- mass: 0.000511
+- quantumNumbers:
+  - spin: 0.5
+  - charge: -1
+  - color: undefined
+  - isospin: undefined
+
+particle:
+- name: Proton
+- type: Quark
+- mass: 0.938
+- quantumNumbers:
+  - spin: 0.5
+  - charge: 1
+  - color: undefined
+  - isospin: undefined
+
+Accelerating particles to 209 GeV
+Electron momentum: 2.09e+2 GeV/c
+Proton momentum: 2.09e+2 GeV/c
+
+Colliding Electron with Proton
+Total collision energy: 418 GeV
+
+Force interactions during collision:
+
+Electromagnetic Force:
+Electromagnetic force between Electron and Proton: -4.53e+0
+Particles attract each other
+
+Gravitational Force:
+Gravitational force between Electron and Proton: 7.75e-14 N
+Gravity is always attractive
+
+Strong Nuclear Force:
+Strong force doesn't act on Electron or Proton (not quarks)
+
+Weak Nuclear Force:
+Weak interaction occurs between Electron and Proton
+Z boson exchange: neutral current interaction
+
+Collision outcomes:
+Created 223 proton-antiproton pairs
+Created 989 electron-positron pairs
+Quark-involved decay processes:
+- Hadronization: quarks combine to form hadrons
+- Jet formation: streams of particles from quark decay
+Lepton-involved decay processes:
+- Possible neutrino oscillation
+- Lepton flavor changing interactions (via weak force)
+Remaining energy converted to heat and radiation
