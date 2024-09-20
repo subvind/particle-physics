@@ -11,6 +11,7 @@ particle:
   - charge: 0
   - color: undefined
   - isospin: undefined
+- isComposite: false
 
 particle:
 - name: Graviton
@@ -21,6 +22,7 @@ particle:
   - charge: 0
   - color: undefined
   - isospin: undefined
+- isComposite: false
 
 particle:
 - name: Gluon
@@ -31,9 +33,10 @@ particle:
   - charge: 0
   - color: none
   - isospin: undefined
+- isComposite: false
 
 particle:
-- name: W/Z Boson
+- name: W Boson
 - type: Boson
 - mass: 80.4
 - quantumNumbers:
@@ -41,6 +44,18 @@ particle:
   - charge: 1
   - color: undefined
   - isospin: undefined
+- isComposite: false
+
+particle:
+- name: Z Boson
+- type: Boson
+- mass: 91.2
+- quantumNumbers:
+  - spin: 1
+  - charge: 0
+  - color: undefined
+  - isospin: undefined
+- isComposite: false
 
 
 ========
@@ -73,7 +88,7 @@ force:
 - strength: 0.000001
 - range: ~1e-18 m
 - description: Responsible for radioactive decay and neutrino interactions
-- mediator: [object Object]
+- mediator: undefined
 
 
 ========
@@ -89,6 +104,7 @@ particle:
   - charge: 0.6666666666666666
   - color: red
   - isospin: undefined
+- isComposite: false
 
 particle:
 - name: Electron
@@ -99,6 +115,7 @@ particle:
   - charge: -1
   - color: undefined
   - isospin: undefined
+- isComposite: false
 
 Accelerating particles to 13000 GeV
 Up Quark momentum: 1.30e+4 GeV/c
@@ -110,19 +127,20 @@ Total collision energy: 26000 GeV
 Force interactions during collision:
 
 Electromagnetic Force:
-Electromagnetic force between Up Quark and Electron: -2.07e+0
+Electromagnetic force between Up Quark and Electron: -6.60e+0
 Particles attract each other
 
 Gravitational Force:
-Gravitational force between Up Quark and Electron: 1.28e-15 N
+Gravitational force between Up Quark and Electron: 7.77e-16 N
 Gravity is always attractive
 
 Strong Nuclear Force:
-Strong force doesn't act on Up Quark or Electron (not quarks)
+Strong force acts on Up Quark or Electron (composite particles)
 
 Weak Nuclear Force:
 Weak interaction occurs between Up Quark and Electron
 W boson exchange: flavor change occurs
+Up Quark changes to Down Quark
 Electron changes to Electron Neutrino
 
 Collision outcomes:
@@ -149,6 +167,7 @@ particle:
   - charge: -1
   - color: undefined
   - isospin: undefined
+- isComposite: false
 
 particle:
 - name: Proton
@@ -159,6 +178,7 @@ particle:
   - charge: 1
   - color: undefined
   - isospin: undefined
+- isComposite: true
 
 Accelerating particles to 209 GeV
 Electron momentum: 2.09e+2 GeV/c
@@ -170,15 +190,15 @@ Total collision energy: 418 GeV
 Force interactions during collision:
 
 Electromagnetic Force:
-Electromagnetic force between Electron and Proton: -4.53e+0
+Electromagnetic force between Electron and Proton: -1.75e+2
 Particles attract each other
 
 Gravitational Force:
-Gravitational force between Electron and Proton: 7.75e-14 N
+Gravitational force between Electron and Proton: 8.94e-13 N
 Gravity is always attractive
 
 Strong Nuclear Force:
-Strong force doesn't act on Electron or Proton (not quarks)
+Strong force doesn't act directly on Electron or Proton (not individual quarks)
 
 Weak Nuclear Force:
 Weak interaction occurs between Electron and Proton

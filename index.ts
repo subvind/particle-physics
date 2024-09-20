@@ -27,7 +27,8 @@ class Particle {
     public name: string,
     public type: ParticleType,
     public mass: number,
-    public quantumNumbers: QuantumNumbers
+    public quantumNumbers: QuantumNumbers,
+    public isComposite: boolean = false
   ) {
     console.log(`particle:`);
     console.log(`- name: ${name}`);
@@ -37,7 +38,8 @@ class Particle {
     console.log(`  - spin: ${quantumNumbers.spin}`);
     console.log(`  - charge: ${quantumNumbers.charge}`);
     console.log(`  - color: ${quantumNumbers.color}`);
-    console.log(`  - isospin: ${quantumNumbers.isospin}\n`);
+    console.log(`  - isospin: ${quantumNumbers.isospin}`);
+    console.log(`- isComposite: ${isComposite}\n`);
   }
 }
 
@@ -47,7 +49,7 @@ interface FundamentalForce {
   strength: number;
   range: string;
   description: string;
-  mediator: Particle;
+  mediator?: Particle;
   interact(particle1: Particle, particle2: Particle): void;
 }
 
@@ -95,7 +97,8 @@ class StrongNuclearForce implements FundamentalForce {
   mediator = new Particle("Gluon", ParticleType.Boson, 0, { spin: 1, charge: 0, color: 'none' });
 
   interact(particle1: Particle, particle2: Particle): void {
-    if (particle1.type === ParticleType.Quark && particle2.type === ParticleType.Quark) {
+    if ((particle1.type === ParticleType.Quark && !particle1.isComposite) || 
+        (particle2.type === ParticleType.Quark && !particle2.isComposite)) {
       const colors = ['red', 'green', 'blue'];
       const color1 = particle1.quantumNumbers.color;
       const color2 = particle2.quantumNumbers.color;
@@ -103,11 +106,13 @@ class StrongNuclearForce implements FundamentalForce {
         console.log(`Strong force binds ${particle1.name} (${color1}) and ${particle2.name} (${color2})`);
         const exchangeColor = colors.find(c => c !== color1 && c !== color2);
         console.log(`Gluon exchange: ${color1} -> ${exchangeColor}, ${color2} -> ${exchangeColor}`);
-      } else {
+      } else if (color1 && color2) {
         console.log(`No strong interaction between ${particle1.name} and ${particle2.name} (same color)`);
+      } else {
+        console.log(`Strong force acts on ${particle1.name} or ${particle2.name} (composite particles)`);
       }
     } else {
-      console.log(`Strong force doesn't act on ${particle1.name} or ${particle2.name} (not quarks)`);
+      console.log(`Strong force doesn't act directly on ${particle1.name} or ${particle2.name} (not individual quarks)`);
     }
   }
 }
@@ -118,10 +123,12 @@ class WeakNuclearForce implements FundamentalForce {
   strength = 1e-6; // relative to strong force
   range = "~1e-18 m";
   description = "Responsible for radioactive decay and neutrino interactions";
-  mediator = new Particle("W/Z Boson", ParticleType.Boson, 80.4, { spin: 1, charge: 1 });
+  mediatorW = new Particle("W Boson", ParticleType.Boson, 80.4, { spin: 1, charge: 1 });
+  mediatorZ = new Particle("Z Boson", ParticleType.Boson, 91.2, { spin: 1, charge: 0 });
 
   interact(particle1: Particle, particle2: Particle): void {
-    if (particle1.type === ParticleType.Lepton || particle2.type === ParticleType.Lepton) {
+    if (particle1.type === ParticleType.Lepton || particle2.type === ParticleType.Lepton ||
+        particle1.type === ParticleType.Quark || particle2.type === ParticleType.Quark) {
       console.log(`Weak interaction occurs between ${particle1.name} and ${particle2.name}`);
       if (Math.random() < 0.5) {
         console.log("W boson exchange: flavor change occurs");
@@ -136,12 +143,31 @@ class WeakNuclearForce implements FundamentalForce {
   }
 
   private flavorChange(particle: Particle): void {
-    if (particle.name === "Electron") {
-      console.log(`${particle.name} changes to Electron Neutrino`);
-    } else if (particle.name === "Muon") {
-      console.log(`${particle.name} changes to Muon Neutrino`);
-    } else if (particle.name.includes("quark")) {
-      console.log(`${particle.name} changes flavor`);
+    switch(particle.name) {
+      case "Electron":
+        console.log(`${particle.name} changes to Electron Neutrino`);
+        break;
+      case "Muon":
+        console.log(`${particle.name} changes to Muon Neutrino`);
+        break;
+      case "Tau":
+        console.log(`${particle.name} changes to Tau Neutrino`);
+        break;
+      case "Up Quark":
+        console.log(`${particle.name} changes to Down Quark`);
+        break;
+      case "Charm Quark":
+        console.log(`${particle.name} changes to Strange Quark`);
+        break;
+      case "Top Quark":
+        console.log(`${particle.name} changes to Bottom Quark`);
+        break;
+      default:
+        if (particle.type === ParticleType.Quark) {
+          console.log(`${particle.name} changes flavor`);
+        } else {
+          console.log(`No flavor change for ${particle.name}`);
+        }
     }
   }
 }
@@ -299,7 +325,7 @@ console.log("========\n");
 
 // Create particles
 const electron2 = new Particle("Electron", ParticleType.Lepton, 0.000511, { spin: 0.5, charge: -1 });
-const proton2 = new Particle("Proton", ParticleType.Quark, 0.938, { spin: 0.5, charge: 1 }); // Proton as a composite particle
+const proton2 = new Particle("Proton", ParticleType.Quark, 0.938, { spin: 0.5, charge: 1 }, true); // Proton as a composite particle
 
 // Run expirement
 const lep = new EnhancedParticleAccelerator(209); // LEP energy
